@@ -8,7 +8,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.yamy.shop.sys.service.service;
+package com.yamy.shop.sys.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;

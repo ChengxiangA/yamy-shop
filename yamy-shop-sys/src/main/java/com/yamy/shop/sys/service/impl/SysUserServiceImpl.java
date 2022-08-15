@@ -8,7 +8,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.yamy.shop.sys.service.service.impl;
+package com.yamy.shop.sys.service.impl;
 
 
 import cn.hutool.core.collection.CollUtil;

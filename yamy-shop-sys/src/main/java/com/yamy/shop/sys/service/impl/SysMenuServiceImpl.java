@@ -8,7 +8,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.yamy.shop.sys.service.service.impl;
+package com.yamy.shop.sys.service.impl;
 
 
 import cn.hutool.core.collection.CollectionUtil;
@@ -17,7 +17,7 @@ import com.yamy.shop.sys.constant.Constant;
 import com.yamy.shop.sys.dao.SysMenuMapper;
 import com.yamy.shop.sys.dao.SysRoleMenuMapper;
 import com.yamy.shop.sys.model.SysMenu;
-import com.yamy.shop.sys.service.service.SysMenuService;
+import com.yamy.shop.sys.service.SysMenuService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -8,12 +8,12 @@
  * 版权所有，侵权必究！
  */
 
-package com.yamy.shop.sys.service.service.impl;
+package com.yamy.shop.sys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yamy.shop.sys.dao.SysConfigMapper;
 import com.yamy.shop.sys.model.SysConfig;
-import com.yamy.shop.sys.service.service.SysConfigService;
+import com.yamy.shop.sys.service.SysConfigService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

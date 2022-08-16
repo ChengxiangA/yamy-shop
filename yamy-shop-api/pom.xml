@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.yamy.shop</groupId>
+        <artifactId>yamy-shop</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>yamy-shop-api</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.yamy.shop</groupId>
+            <artifactId>yamy-shop-service</artifactId>
+            <version>${yamy.shop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yamy.shop</groupId>
+            <artifactId>yamy-shop-sys</artifactId>
+            <version>${yamy.shop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yamy.shop</groupId>
+            <artifactId>yamy-shop-security-admin</artifactId>
+            <version>${yamy.shop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yamy.shop</groupId>
+            <artifactId>yamy-shop-quartz</artifactId>
+            <version>${yamy.shop.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

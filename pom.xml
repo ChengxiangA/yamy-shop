@@ -12,10 +12,14 @@
     <modules>
         <module>yamy-shop-sys</module>
         <module>yamy-shop-common</module>
+        <module>yamy-shop-bean</module>
+        <module>yamy-shop-security</module>
+        <module>yamy-shop-service</module>
+        <module>yamy-shop-quartz</module>
     </modules>
 
     <properties>
-        <yami.shop.version>0.0.1-SNAPSHOT</yami.shop.version>
+        <yamy.shop.version>0.0.1-SNAPSHOT</yamy.shop.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>

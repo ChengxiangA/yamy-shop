@@ -14,18 +14,8 @@
     <dependencies>
         <dependency>
             <groupId>com.yamy.shop</groupId>
-            <artifactId>yamy-shop-service</artifactId>
+            <artifactId>yamy-shop-security-common</artifactId>
             <version>${yamy.shop.version}</version>
-        </dependency>
-        <!--security-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.anji-plus</groupId>
-            <artifactId>captcha</artifactId>
-            <version>1.3.0</version>
         </dependency>
     </dependencies>
 

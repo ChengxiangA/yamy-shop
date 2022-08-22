@@ -12,10 +12,10 @@ import javax.validation.constraints.Size;
 @Data
 public class UpdatePasswordDto {
     @NotBlank(message="旧密码不能为空")
-    @Size(max = 50)
+    @Size(max = 50,message = "旧密码最大长度为{max}")
     private String password;
 
     @NotBlank(message="新密码不能为空")
-    @Size(max = 50)
+    @Size(max = 50,message = "新密码最大长度为{max}")
     private String newPassword;
 }

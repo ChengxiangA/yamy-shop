@@ -13,10 +13,10 @@ package com.yamy.shop.sys.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yami.shop.sys.dao.SysUserMapper;
-import com.yami.shop.sys.dao.SysUserRoleMapper;
-import com.yami.shop.sys.model.SysUser;
-import com.yami.shop.sys.service.SysUserService;
+import com.yamy.shop.sys.dao.SysUserMapper;
+import com.yamy.shop.sys.dao.SysUserRoleMapper;
+import com.yamy.shop.sys.model.SysUser;
+import com.yamy.shop.sys.service.SysUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

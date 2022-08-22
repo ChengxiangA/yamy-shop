@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yamy.shop.dao.ProdPropMapper">
+    <resultMap id="BaseResultMap" type="com.yamy.shop.bean.model.ProdProp">
+        <id column="prod_id" jdbcType="BIGINT" property="propId" />
+        <result column="prop_name" jdbcType="VARCHAR" property="propName" />
+        <result column="rule" jdbcType="TINYINT" property="rule" />
+        <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+    </resultMap>
+
+    <resultMap id="propAndValueMap" type="com.yamy.shop.bean.model.ProdProp">
+        <id column="prod_id" jdbcType="BIGINT" property="propId" />
+        <result column="prop_name" jdbcType="VARCHAR" property="propName" />
+        <result column="rule" jdbcType="TINYINT" property="rule" />
+        <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+        <collection property="prodPropValueList" column="prop_id"
+                    ofType="com.yamy.shop.bean.model.ProdPropValue">
+            <id property="valueId" column="value_id" />
+            <result property="propValue" column="prop_value" />
+        </collection>
+    </resultMap>
+    
+    <select id="listPropAndValue" resultMap="propAndValueMap">
+
+    </select>
+
+    <delete id="deleteByProdId">
+        delete from tz_prod_prop where prop_id = #{propId} and rule=#{rule} and shop_id=#{shopId}
+    </delete>
+
+    <!-- 计算总条数返回给分页对象 -->
+    <select id="countPropAndValue" resultType="Long">
+        select count(0) from tz_prod_prop
+        where
+            rule = #{rule} and shop_id = #{shopId}
+        <if test="propName != null and propName != ''">
+            <bind name="propNamePattern" value="'%' + _parameter.propName + '%'" />
+            and prop_name like #{propNamePatter}
+        </if>
+    </select>
+
+    <select id="getProdPropByPropNameAndShopId" resultMap="BaseResultMap">
+        select * from tz_prod_prop where prop_name = #{propName} and shop_id = #{shopId} and rule = #{rule}
+    </select>
+</mapper>

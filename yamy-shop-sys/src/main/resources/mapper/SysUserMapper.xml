@@ -20,7 +20,7 @@
         and shop_id = #{shopId}
 	</delete>
 	
-	<select id="selectByUsername" resultType="com.yami.shop.sys.model.SysUser">
+	<select id="selectByUsername" resultType="com.yamy.shop.sys.model.SysUser">
 		select * from tz_sys_user where username = #{username}
 	</select>
 </mapper>

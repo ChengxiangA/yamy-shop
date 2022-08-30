@@ -1,0 +1,106 @@
+package com.yamy.shop.admin.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.yamy.shop.bean.model.Transport;
+import com.yamy.shop.common.util.PageParam;
+import com.yamy.shop.security.admin.util.SecurityUtils;
+import com.yamy.shop.service.TransportService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * @author 程祥
+ * @date 2022/8/27 16:43
+ */
+@RestController
+@RequestMapping("/shop/transport")
+public class TransportController {
+
+    @Autowired
+    private TransportService transportService;
+
+    /**
+     * 分页获取
+     * @param transport
+     * @param page
+     * @return
+     */
+    @GetMapping("/page")
+    public ResponseEntity<IPage<Transport>> page(Transport transport, PageParam<Transport> page) {
+        Long shopId = SecurityUtils.getSysUser().getShopId();
+        IPage<Transport> transports = transportService.page(page,
+                new LambdaQueryWrapper<Transport>()
+                        .eq(Transport::getShopId, shopId)
+                        .like(StringUtils.isNotBlank(transport.getTransName()), Transport::getTransName, transport.getTransName()));
+        return ResponseEntity.ok(transports);
+    }
+
+    /**
+     * 获取信息
+     * @param id
+     * @return
+     */
+    @GetMapping("/info/{id}")
+    public ResponseEntity<Transport> info(@PathVariable("id") Long id) {
+        Transport transport = transportService.getTransportAndAllItems(id);
+        return ResponseEntity.ok(transport);
+    }
+
+    /**
+     * 保存
+     * @param transport
+     * @return
+     */
+    @PostMapping
+    public ResponseEntity<Void> save(@RequestBody Transport transport) {
+        Long shopId = SecurityUtils.getSysUser().getShopId();
+        transport.setShopId(shopId);
+        Date createTime = new Date();
+        transport.setCreateTime(createTime);
+        transportService.insertTransportAndTransfee(transport);
+        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * 修改
+     * @param transport
+     * @return
+     */
+    @PutMapping
+    public ResponseEntity<Void> update(@RequestBody Transport transport) {
+        transportService.updateTransportAndTransfee(transport);
+        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * 删除
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public ResponseEntity<Void> delete(@RequestBody Long[] ids) {
+        transportService.deleteTransportAndTransfeeAndTranscity(ids);
+        // 删除运费模板的缓存
+        for (Long id : ids) {
+            transportService.removeTransportAndAllItemsCache(id);
+        }
+        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * 获取运费模板列表
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseEntity<List<Transport>> list() {
+        Long shopId = SecurityUtils.getSysUser().getShopId();
+        List<Transport> list = transportService.list(new LambdaQueryWrapper<Transport>().eq(Transport::getShopId, shopId));
+        return ResponseEntity.ok(list);
+    }
+}

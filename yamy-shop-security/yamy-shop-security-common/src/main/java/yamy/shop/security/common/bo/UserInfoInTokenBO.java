@@ -10,19 +10,32 @@ import java.util.Set;
  */
 @Data
 public class UserInfoInTokenBO {
+    /**
+     * 用户ID
+     */
     private String userId;
 
     private Long shopId;
 
     private String nickName;
 
-    // 大后台还是前台，枚举类
+    /**
+     * 系统类型
+     * @see com.yamy.shop.security.common.enums.SysTypeEnum
+     */
     private Integer sysType;
 
+    /**
+     * 是否是管理员
+     */
     private Integer isAdmin;
+
 
     private String bizUserId;
 
+    /**
+     * 权限列表
+     */
     private Set<String> perms;
 
     /**

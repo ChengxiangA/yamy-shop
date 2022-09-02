@@ -15,12 +15,13 @@ public class SecurityUtils {
      */
     public static YamySysUser getSysUser() {
         UserInfoInTokenBO userInfoInTokenBO = AuthUserContext.get();
-        YamySysUser yamySysUser = new YamySysUser();
-        yamySysUser.setUserId(Long.valueOf(yamySysUser.getUserId()));
-        yamySysUser.setAuthorities(userInfoInTokenBO.getPerms());
-        yamySysUser.setUsername(userInfoInTokenBO.getNickName());
-        yamySysUser.setEnabled(userInfoInTokenBO.getEnabled());
-        yamySysUser.setShopId(userInfoInTokenBO.getShopId());
-        return yamySysUser;
+
+        YamySysUser details = new YamySysUser();
+        details.setUserId(Long.valueOf(userInfoInTokenBO.getUserId()));
+        details.setEnabled(userInfoInTokenBO.getEnabled());
+        details.setUsername(userInfoInTokenBO.getNickName());
+        details.setAuthorities(userInfoInTokenBO.getPerms());
+        details.setShopId(userInfoInTokenBO.getShopId());
+        return details;
     }
 }
